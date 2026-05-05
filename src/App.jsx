@@ -90,7 +90,7 @@ function App(){
           Recordatorios
         </Heading>
 
-        <Box p={6} w="xl" borderWidth={1} borderRadius="lg" boxShadow="sm">
+        <Box p={6} w="lg" borderWidth={1} borderRadius="lg" boxShadow="sm">
           <VStack spacing={4}>
             <Heading size="md" alignSelf="flex-start">Ingresar nueva tarea.</Heading>
 
