@@ -25,7 +25,6 @@ function App(){
     try{
       const response = await fetch(`${API_URL}/recordatorios`)
       const data = await response.json()
-      console.log(data)
       setTareas(data)
     } catch(e) {
       console.log(e)
@@ -44,7 +43,7 @@ function App(){
   }
 
   const guardar_tareas = async ()=> {
-    if(!formData.asignatura || !formData.nombre){
+    if(!formData.asignatura || !formData.nombre || !formData.fecha || !formData.seccion || !formData.descripcion){
       toast.closeAll()
       toast({title: "Faltan Campos", status: "warning", duration: 2000,})
       return
@@ -85,7 +84,7 @@ function App(){
     <Container maxW="container.md" py={10}>
       <VStack spacing={6}>
         <Heading as="h1" size="xl" color="blue.500">
-          Mis Trabajos y Recordatorios
+          Recordatorios
         </Heading>
 
         <Box p={6} borderWidth={1} borderRadius="lg" boxShadow="sm">
@@ -109,14 +108,14 @@ function App(){
             <Heading size="md" mt={4}>Tareas ingresadas</Heading>
 
             {tareas.map((tarea, index) => (
-              <Box key={index} p={5} borderWidth={1} borderRadius="lg" bg="gray.50" _dark={{bg:"gray.700"}}>
+              <Box key={index} w="100%" p={5} borderWidth={1} borderRadius="lg" bg="gray.50" _dark={{bg:"gray.700"}}>
                 <Text fontWeight="bold">📌 {tarea.asignatura} - {tarea.nombre}</Text>
                 <Flex gap={2} mt={2}>
                   <Badge colorScheme="blue">{tarea.seccion}</Badge>
                   <Badge colorScheme="red">{tarea.fecha}</Badge>
                 </Flex>
                 <Text mt={3} fontSize="md" color="gray.600" _dark={{color: "gray.300"}}>
-                  Conectar el formulario de React con la API enla nube usando fetch.
+                  {tarea.descripcion}
                 </Text>
                 <Flex justify="flex-end" w="100%" mt={4}>
                   <Button colorScheme='red' onClick={()=>eliminar_tarea(tarea.id)}>
