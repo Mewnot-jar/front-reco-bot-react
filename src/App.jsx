@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { Container, Heading, Button, VStack, Input, Textarea, Box, Text, Badge, Flex, useToast } from "@chakra-ui/react"
+import { Container, Heading, Button, VStack, Input, Textarea, Box, Text, Badge, Flex, useToast, Skeleton, SkeletonCircle, SkeletonText } from "@chakra-ui/react"
 import { DeleteIcon } from '@chakra-ui/icons'
 
 function App(){
@@ -13,7 +13,7 @@ function App(){
   })
 
   const [tareas, setTareas] = useState([])
-  const [cargando, setCargando] = useState(false)
+  const [cargando, setCargando] = useState(true)
   const toast = useToast({
     maxToasts: 1
   })
@@ -23,11 +23,14 @@ function App(){
 
   const obtener_tareas = async () => {
     try{
+      setCargando(true)
       const response = await fetch(`${API_URL}/recordatorios`)
       const data = await response.json()
       setTareas(data)
     } catch(e) {
       console.log(e)
+    }finally{
+      setCargando(false)
     }
   }
 
@@ -87,7 +90,7 @@ function App(){
           Recordatorios
         </Heading>
 
-        <Box p={6} borderWidth={1} borderRadius="lg" boxShadow="sm">
+        <Box p={6} w="xl" borderWidth={1} borderRadius="lg" boxShadow="sm">
           <VStack spacing={4}>
             <Heading size="md" alignSelf="flex-start">Ingresar nueva tarea.</Heading>
 
@@ -107,7 +110,22 @@ function App(){
 
             <Heading size="md" mt={4}>Tareas ingresadas</Heading>
 
-            {tareas.map((tarea, index) => (
+            {cargando ? (
+              <>
+                <Box w="100%" p={5} borderWidth={1} borderRadius="lg" mt={3} bg="white">
+                  <SkeletonCircle size="5"/>
+                  <SkeletonText mt="4" noOfLines={2} spacing="4"/>
+                </Box>
+                <Box  w="100%" p={5} borderWidth={1} borderRadius="lg" mt={3} bg="white">
+                  <SkeletonCircle size="5"/>
+                  <SkeletonText mt="4" noOfLines={2} spacing="4"/>
+                </Box>
+              </>
+
+            ) : tareas.length === 0 ? (
+              <Text mt={4} color="gray.500" textAlign="center">Estas al dia.</Text>
+            ) : (
+              tareas.map((tarea, index) => (
               <Box key={index} w="100%" p={5} borderWidth={1} borderRadius="lg" bg="gray.50" _dark={{bg:"gray.700"}}>
                 <Text fontWeight="bold">📌 {tarea.asignatura} - {tarea.nombre}</Text>
                 <Flex gap={2} mt={2}>
@@ -123,7 +141,8 @@ function App(){
                   </Button>
                 </Flex>
               </Box>
-            ))}
+            ))
+            )}
 
           </VStack>
         </Box>
