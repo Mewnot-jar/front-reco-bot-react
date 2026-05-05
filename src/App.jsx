@@ -94,12 +94,12 @@ function App(){
           <VStack spacing={4}>
             <Heading size="md" alignSelf="flex-start">Ingresar nueva tarea.</Heading>
 
-            <Input placeholder="Asignatura (Ej: Estructura de datos y algoritmos.)" name="asignatura" value={formData.asignatura} onChange={handleChange} variant="filled"/>
-            <Input placeholder="Nombre de la tarea (Ej: Proyecto grupal.)" name="nombre" value={formData.nombre} onChange={handleChange} variant="filled"/>
+            <Input placeholder="Asignatura" name="asignatura" value={formData.asignatura} onChange={handleChange} variant="filled"/>
+            <Input placeholder="Nombre de la tarea" name="nombre" value={formData.nombre} onChange={handleChange} variant="filled"/>
 
             <Flex w="100%" justify="space-between" gap={2}>
-              <Input type="date" name="fecha" value={formData.fecha} onChange={handleChange} variant="filled"/>
-              <Input placeholder="Seccion (Ej: Jueves/Martes)" name="seccion" value={formData.seccion} onChange={handleChange} variant="filled"/>
+              <Input placeholder='Fecha' type="date" name="fecha" value={formData.fecha} onChange={handleChange} variant="filled"/>
+              <Input placeholder="Seccion" name="seccion" value={formData.seccion} onChange={handleChange} variant="filled"/>
             </Flex>
 
             <Textarea placeholder="Descripcion del trabajo..." name="descripcion" value={formData.descripcion} onChange={handleChange}/>
