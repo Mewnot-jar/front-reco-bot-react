@@ -19,7 +19,7 @@ function App(){
   })
 
 
-  const API_URL = "https://reco-bot-py.onrender.com"
+  const API_URL = import.meta.env.VITE_API_URL
 
   const obtener_tareas = async () => {
     try{
