@@ -45,7 +45,7 @@ function App(){
   const guardar_tareas = async ()=> {
     if(!formData.asignatura || !formData.nombre || !formData.fecha || !formData.seccion || !formData.descripcion){
       toast.closeAll()
-      toast({title: "Faltan Campos", status: "warning", duration: 2000,})
+      toast({title: "Faltan Campos", status: "warning", duration: 2000, position: 'bottom-right'})
       return
     }
 
@@ -57,12 +57,12 @@ function App(){
         body: JSON.stringify(formData)
       })
       if(response.ok){
-        toast({title: "Exito, tarea guardada", status:"success", duration: 2000})
+        toast({title: "Exito, tarea guardada", status:"success", duration: 2000, position: 'bottom-right'})
         setFormData({asignatura: '', nombre: '', fecha: '', seccion: '', descripcion: '',})
         obtener_tareas()
       }
     }catch(e){
-      toast({title: `Error, tarea no guardada. (${e})`, status: "error", duration: 2000})
+      toast({title: `Error, tarea no guardada. (${e})`, status: "error", duration: 2000, position: 'bottom-right'})
     }finally{
       setCargando(false)
     }
