@@ -1,16 +1,38 @@
-# React + Vite
+# 📝 Recordatorios Dashboard (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Estado: En Desarrollo](https://img.shields.io/badge/Estado-En%20Desarrollo-orange)
 
-Currently, two official plugins are available:
+Interfaz de usuario moderna y responsiva para la gestión de tareas y evaluaciones académicas. Este panel se comunica de forma segura con la API de RecordBOT para operaciones CRUD en tiempo real.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Características Principales
 
-## React Compiler
+* **Gestión en Tiempo Real:** Creación y eliminación dinámica de tareas reflejadas instantáneamente en la base de datos.
+* **Diseño Responsivo (Mobile-First):** Interfaz fluida que se adapta automáticamente a smartphones, tablets y monitores de escritorio.
+* **Experiencia de Usuario (UX):** Implementación de *Skeleton Screens* para transiciones de carga suaves y notificaciones Toast para confirmar acciones al usuario.
+* **Seguridad:** Conexión estricta mediante CORS y variables de entorno.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tecnologías Utilizadas
 
-## Expanding the ESLint configuration
+* **React (Vite):** Framework principal para un renderizado y compilación ultrarrápidos.
+* **Chakra UI:** Biblioteca de componentes accesibles y diseño modular.
+* **JavaScript (ES6+)**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚙️ Configuración Local
+
+1. Clona el repositorio.
+2. Instala las dependencias necesarias:
+   \`\`\`bash
+   npm install
+   \`\`\`
+3. Crea un archivo `.env` o `.env.local` en la raíz del proyecto para conectar con tu API:
+   \`\`\`env
+   VITE_API_URL=http://localhost:8000 # O la URL de tu API en producción
+   \`\`\`
+4. Inicia el servidor de desarrollo:
+   \`\`\`bash
+   npm run dev
+   \`\`\`
+
+## 🌐 Despliegue
+Este proyecto está optimizado para ser alojado en plataformas para sitios estáticos como **Vercel**. 
+* **Nota importante para Vercel:** Asegúrate de configurar la variable de entorno `VITE_API_URL` en el panel de configuración del proyecto antes de realizar el despliegue.
